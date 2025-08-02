@@ -1,12 +1,11 @@
-
 "use server";
 
 import { signIn, signOut } from "@/auth";
 
 export const login = async () => {
-  await signIn("github", { redirectTo: "/" });
+  await signIn("github");  // <-- no redirectTo here
 };
 
 export const logout = async () => {
-  await signOut({ redirectTo: "/" });
+  await signOut({ redirectTo: "/" }); // logout redirect is fine
 };
