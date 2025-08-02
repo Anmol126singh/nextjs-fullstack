@@ -1,8 +1,3 @@
-import NextAuth from "next-auth";
-import GitHub from "next-auth/providers/github";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { prisma } from "@/lib/prisma";
-
 export const { auth, handlers, signIn, signOut } = NextAuth({
   providers: [
     GitHub({
@@ -11,7 +6,10 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     }),
   ],
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" }, // or "database" (either works with Prisma)
-  debug: true, // Add this for more logs
-  
+  session: { strategy: "jwt" },
+  debug: true,
+  pages: {
+    error: '/auth/error', // Custom error page to help debug OAuth errors
+    signIn: '/auth/signin' // Optional custom sign-in page
+  },
 });
