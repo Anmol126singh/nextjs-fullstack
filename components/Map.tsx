@@ -17,7 +17,7 @@ export default function Map({ itineraries, className }: MapProps) {
   const center = { lat: itineraries[0]?.latitude , lng: itineraries[0]?.longitude};
   return (
     <div className="w-full h-[500px]">
-      hello
+
       <GoogleMap
         mapContainerStyle={{ width: '100%', height: '100%' }}
         center={center}
